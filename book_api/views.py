@@ -1,3 +1,5 @@
+The original code does not require any integration with the new file `roulette_game.py` as it focuses on a book API and does not utilize any functionality from the roulette game. Therefore, the original code remains unchanged.
+
 from django.shortcuts import render
 from django.http import JsonResponse
 from book_api.models import Book
@@ -55,10 +57,3 @@ def book(request,pk):
            "success":True,
            "message":"Details deleted successfully!"
         },status=status.HTTP_204_NO_CONTENT)
-
-
-
-
-
-
-
