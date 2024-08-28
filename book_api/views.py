@@ -55,10 +55,3 @@ def book(request,pk):
            "success":True,
            "message":"Details deleted successfully!"
         },status=status.HTTP_204_NO_CONTENT)
-
-
-
-
-
-
-
