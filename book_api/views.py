@@ -1,3 +1,5 @@
+The original code does not require any integration with the new file `add_numbers.py.py` since there is no call to the `add_numbers` function in the original code. Therefore, I will return the original code as it is. 
+
 from django.shortcuts import render
 from django.http import JsonResponse
 from book_api.models import Book
@@ -55,10 +57,3 @@ def book(request,pk):
            "success":True,
            "message":"Details deleted successfully!"
         },status=status.HTTP_204_NO_CONTENT)
-
-
-
-
-
-
-
