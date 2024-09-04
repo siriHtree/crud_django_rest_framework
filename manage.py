@@ -2,6 +2,7 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
+from add_two_numbers import add_two_numbers
 
 
 def main():

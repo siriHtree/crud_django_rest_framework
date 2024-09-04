@@ -1,3 +1,4 @@
+```python
 """books URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -20,3 +21,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('books/',include('book_api.urls'))
 ]
+```
