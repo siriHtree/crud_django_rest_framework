@@ -1,7 +1,9 @@
+```python
 #!/usr/bin/env python
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
+from app import add_values  # Importing the add_values function from app.py
 
 
 def main():
@@ -20,3 +22,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+```
