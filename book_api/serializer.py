@@ -1,9 +1,20 @@
-# it convert our data but we need to tell to what we will convert it to
-
 from rest_framework import serializers
 from book_api.models import Book
 
 class BookSerializer(serializers.Serializer):
+    """Serializer for the Book model.
+
+    This serializer handles the conversion of Book instances to and from 
+    JSON format. It includes fields for id, title, number of pages, 
+    publish date, and quantity.
+
+    Attributes:
+        id (IntegerField): The unique identifier for the book.
+        title (CharField): The title of the book.
+        number_of_pages (IntegerField): The number of pages in the book.
+        publish_date (DateField): The date the book was published.
+        quantity (IntegerField): The quantity of the book available.
+    """
     id=serializers.IntegerField(read_only=True)
     title=serializers.CharField()
     number_of_pages=serializers.IntegerField()

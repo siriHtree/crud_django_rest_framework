@@ -12,53 +12,39 @@ from rest_framework import status
 # Create your views here.
 @api_view(['GET'])
 def book_list(request):
-    books=Book.objects.all()  #Complex Data
-    # books_python=list(books.values()) #Python DS
-    # return JsonResponse({
-    #     "books":books_python
-    # })
-
-    #with builtin serializer
-    serializer=BookSerializer(books,many=True) #it return in json formate
+    books = Book.objects.all()  # Complex Data
+    serializer = BookSerializer(books, many=True)  # it return in json formate
     return Response(serializer.data)
 
 @api_view(["POST"])
 def book_create(request):
-    serializer=BookSerializer(data=request.data)
+    serializer = BookSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
-        return Response(serializer.data,status=status.HTTP_201_CREATED)
-    else:
-        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-@api_view(["GET","PUT","DELETE"])
-def book(request,pk):
+@api_view(["GET", "PUT", "DELETE"])
+def book(request, pk):
     try:
-        book=Book.objects.get(pk=pk)
-    except:
+        book = Book.objects.get(pk=pk)
+    except Book.DoesNotExist:
         return Response({
-            "error":'Book does not exist'
-        },status=status.HTTP_404_NOT_FOUND)
+            "error": 'Book does not exist'
+        }, status=status.HTTP_404_NOT_FOUND)
 
-    if(request.method=="GET"):
-        serializer=BookSerializer(book)
+    if request.method == "GET":
+        serializer = BookSerializer(book)
         return Response(serializer.data)
-    if(request.method=="PUT"):
-        serializer=BookSerializer(book,data=request.data)
+    elif request.method == "PUT":
+        serializer = BookSerializer(book, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
-        return Response(serializer.errors,status=status.HTTP_400_BAD_REQUEST)
-    if(request.method=="DELETE"):
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    elif request.method == "DELETE":
         book.delete()
         return Response({
-           "success":True,
-           "message":"Details deleted successfully!"
-        },status=status.HTTP_204_NO_CONTENT)
-
-
-
-
-
-
-
+            "success": True,
+            "message": "Details deleted successfully!"
+        }, status=status.HTTP_204_NO_CONTENT)
