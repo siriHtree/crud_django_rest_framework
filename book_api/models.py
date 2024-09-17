@@ -10,6 +10,7 @@ class Book(models.Model):
     number_of_pages = models.IntegerField()
     publish_date = models.DateField()
     quantity = models.IntegerField()
+    author = models.CharField(max_length=100)  # New field added
 
     def __str__(self):
         return self.title

@@ -19,6 +19,7 @@ class Migration(migrations.Migration):
                 ('number_of_pages', models.IntegerField()),
                 ('publish_date', models.DateField()),
                 ('quantity', models.IntegerField()),
+                ('auther', models.CharField(max_length=100)),  # New field added
             ],
         ),
     ]
